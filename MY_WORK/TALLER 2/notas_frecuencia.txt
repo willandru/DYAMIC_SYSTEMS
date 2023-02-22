@@ -1,0 +1,41 @@
+FUNCION DE TRANSFERENCIA:
+Conocer la función de transferencia de un sistema da información valiosa del comportamiento del sistema en el dominio de la frecuencia. Se pueden saber cosas como:
+
+1. TIPO DE SISTEMA: Puedes determinar si un sistema e sde primer orden, segundo orden o de orden mayor basado en el número de polos y zeros.
+2. ESTABILIDAD: Puedes determinar la estabilidad del sistema al analizar la ubicaćión de los polos; si todos los polos estan en la parte izquierda del plano complejo, el sistema es estable.
+3. FRECUENCIA DE RESONANCIA: Puedes determinar la frecuencia de resoanncia del sistema de la gráfica de la amplitud de la función de transferencia. La frecuencia de resonancia será frecuancia de mayor amplitud.
+4. Ancho de banda: Puedes determinarlo de la fgráfica de amplitud. Es el rango de frecuencias en el cual la magnitud de la función de transferencia esta a cierto porcentaje (ej 3DB) de su valor máximo.
+5. RELACIÓN DE AMORTIGUAMIENTO: Puedes determinar la relación de amortiguamiento de un sistema de 2 orden por la ubicación de los polos. La relación de amortiguamiento es una medida de que tan rapido responde el sistema a cambios en la entrada y que tan rapido recupera el estado de equilibrio. 
+6. FRECUENCIA NATURAL: Puedes determinar la frecuencia natural de un sistema de 2 orden por la ubicación de los polos. La frecuencia natural es una medida de que tan rapido oscila el sistema en ausencia de amortiguamiento. 
+7. MARGEN DE FASE: De la gráfica de fase. Es una medida de cuanta fase de retraso 'lag' puede agregarse al sistema sin causar inestabilidad.
+8. MARGEN DE GANANCIA: De la gráfica de magnitud. Una medida de cuanta ganancia puede ser añadida al sistema sin causar inestabilidad.
+9. ERROR DEL ESTACIO ESTACIONARIO: Se puede determinar el error estacionario del sistema a una señal de entrada paso o sinusoidal al analizar la gráfica de la magnitud a bajas frecuencias.
+10. SENSIVIDAD: La sensividad del sistema a cambios en los parametros de la función de transferencia al analizar la magnitud y la fase. Es una herramienta utli para optimizar el rendimiento y robustez del sistema.
+
+sys= ss(A,B,C,D)
+tf= tf(N,D)
+[b,a]=ss2tf(A,B,C,D)
+zpk(sys) -> gráfica de polos
+bode(sys) -> gráfica de amplitud y frecuencia
+
+
+PARAMETROS DE LA FUNCIÓN DE TRANSFERENCIA - CON EJEMPLOS
+
+	Sea la fucnión de transferencia G(s)=(3s+4)/(s²+4s+5)
+1. COEFICIENTES DEL NUMERADOR: Son los coeficientes del polinomio del numerador. Ejemplo: [3 4]
+2. COEFICIENTES DEL DENOMINADOR: Son los coeficientes del polinomio del  denominador. Ejemplo: [1 4 5]
+3. POLOS: Son las raices del denominador. Ejemplo: s=-2+j y s=-2-j
+4. ZEROS: Es la raiz del polinomio del numerador. Ejemplo: -4/3
+5. GANANCIA: Es la relación de los coeficientes mayores del numerador y denomindaor. Ejemplo: 3/1 = 3
+6. CONSTANTE DE TIEMPO: Son dadas por el reciproco de la parte real de los polos. Ejemplo: 1
+7. FRECUENCIA NATURAL: Es dada por la raiz cuadrada de la parte real de los polos conjudaos. Ejemplo: 1.41 (~rad/s)
+8. RELACIÓND E AMORTIGUACIÓN: Es dada por el negativo de la parte real del polo complejo conjugado, dividido por la magnitud del polo. EJemplo: ζ = - real(p)/|p|. ζ= -(-2)/sqrt(2²+1²)~= 0.89
+
+
+	  ζ (zeta): la relación de amortiguamiento, que describe la cantidad de amortiguamiento en el sistema.
+      ω (omega): la frecuencia natural, que describe la frecuencia a la que oscilaría un sistema no amortiguado.
+      K (kappa): la ganancia del sistema, que describe la amplificación o atenuación de la señal de entrada por parte del sistema.
+      α (alfa): el ángulo de salida o llegada, que describe el ángulo de los polos o ceros complejos con respecto al eje real negativo en el plano s.
+      β (beta): el ángulo de fase, que describe el cambio de fase entre las señales de entrada y salida del sistema.
+      γ (gamma): la frecuencia de corte, que describe la frecuencia a la que un filtro atenúa la señal de entrada en una cierta cantidad.
+      λ (lambda): el valor propio, que describe el valor de s que satisface la ecuación característica del sistema.
